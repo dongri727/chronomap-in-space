@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'my_home_page.dart';
+import 'scalable/bloc_provider.dart';
+import 'scalable/timeline/timeline.dart';
 import 'serverpod_client.dart';
 
 void main() async {
@@ -20,18 +22,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Chronomap in Space',
-      theme: ThemeData(
+    return BlocProvider(
+      t: Timeline(Theme.of(context).platform),
+      child: MaterialApp(
+        title: 'Chronomap in Space',
+        theme: ThemeData(
 
-        textTheme: GoogleFonts.tsukimiRoundedTextTheme(
-            Theme.of(context).textTheme
+          textTheme: GoogleFonts.tsukimiRoundedTextTheme(
+              Theme.of(context).textTheme
+          ),
+
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
         ),
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        home: const MyHomePage(),
       ),
-      home: const MyHomePage(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'add_events/principal_page.dart';
+import 'scalable/menu/scalable.dart';
 import 'utils/theme.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -56,7 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   'Scalable View',
                   style: SpaceTheme.textTheme.bodyLarge,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Scalable()));
+                },
               ),
             ),
             Padding(
