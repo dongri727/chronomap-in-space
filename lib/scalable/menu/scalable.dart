@@ -1,6 +1,5 @@
 import 'package:acorn_client/acorn_client.dart';
 import 'package:flutter/material.dart';
-
 import '../../serverpod_client.dart';
 import '../bloc_provider.dart';
 import '../timeline/widget.dart';
@@ -24,9 +23,6 @@ class ScalableState extends State<Scalable> {
 
   List<Principal> listPrincipal = [];
   List<int> principalIds = [];
-
-  TextEditingController searchController = TextEditingController();
-  //bool selectCountry = false;
 
   Future<void> fetchPrincipal() async {
     try {
@@ -116,6 +112,14 @@ class ScalableState extends State<Scalable> {
                               });
                         }
                     ),
+                      IconButton(
+                        icon: const Icon(
+                            Icons.search),
+                        onPressed: () async {
+                          await fetchPrincipal();
+                          timeline.gatherEntries(listPrincipal);
+                        },
+                      ),
                     const Padding(
                       padding: EdgeInsets.only(top: 40.0),
                       child: Text('text'),
