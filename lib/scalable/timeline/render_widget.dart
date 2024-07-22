@@ -116,7 +116,7 @@ class TimelineRenderObject extends RenderBox {
     if (_processedFocusItem == _focusItem) {
       return;
     }
-    if (_focusItem == null || topOverlap == 0.0) {
+    if (_focusItem == null ||topOverlap == 0.0) {
       return;
     }
 
@@ -219,6 +219,7 @@ class TimelineRenderObject extends RenderBox {
         continue;
       }
 
+      double legOpacity = item.legOpacity * item.opacity;
       Offset entryOffset = Offset(x + Timeline.lineWidth / 2.0, item.y);
 
       /// Draw the small circle on the left side of the Timeline.

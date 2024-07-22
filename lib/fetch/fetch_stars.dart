@@ -23,5 +23,4 @@ class FetchStarsRepository {
       debugPrint('$e');
     }
   }
-
 }

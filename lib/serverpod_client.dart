@@ -5,7 +5,10 @@ late Client client;
 
 Future<void> initializeServerpodClient() async {
 
+  //const ipAddress = 'localhost';
+
   client = Client(
+    //'http://$ipAddress:8080/',
     'https://api.laporte.academy/',
   )..connectivityMonitor = FlutterConnectivityMonitor();
 }

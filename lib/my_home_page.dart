@@ -1,3 +1,4 @@
+import 'package:chronomap_in_space/3d_paths.dart';
 import 'package:flutter/material.dart';
 import 'add_events/principal_page.dart';
 import 'scalable/menu/scalable.dart';
@@ -62,6 +63,21 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const Scalable()));
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: OutlinedButton(
+                child: Text(
+                  'Voyager1',
+                  style: SpaceTheme.textTheme.bodyLarge,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Paths()));
                 },
               ),
             ),

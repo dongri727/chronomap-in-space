@@ -8,7 +8,7 @@ import 'menu_section.dart';
 
 class Scalable extends StatefulWidget {
   final List<Principal>? principal;
-  const Scalable({ super.key , this.principal});
+  const Scalable({ super.key, this.principal});
 
   @override
   ScalableState createState() => ScalableState();
@@ -20,6 +20,9 @@ class ScalableState extends State<Scalable> {
   /// [MenuData] selects era witch will be displayed at the Timeline
   /// This data is loaded from the asset bundle during [initState()]
   final MenuData _menu = MenuData();
+
+  List<String> locations = ['Universe', 'Solar System', 'Milky Way', 'Other Galaxy'];
+  List<int> spaceIds = [1,4];
 
   List<Principal> listPrincipal = [];
   List<int> principalIds = [];
@@ -33,6 +36,28 @@ class ScalableState extends State<Scalable> {
       debugPrint('$e');
     }
   }
+
+  Future<void> fetchPrincipalByLocation({List<String>? location}) async {
+    try {
+      listPrincipal = await client.principal.getPrincipal(keywords: location);
+      principalIds = listPrincipal.map((item) => item.id as int).toList();
+      setState(() {}); // Refresh UI with new data
+    } on Exception catch (e) {
+      debugPrint('$e');
+    }
+  }
+
+  ///fetch principal in Space
+  Future<void> fetchPrincipalByDetailIds(List<int>? detailIds) async {
+    try {
+      listPrincipal = await client.principal.getPrincipalByDetailIds(detailIds: detailIds);
+      principalIds = listPrincipal.map((item) => item.id as int).toList();
+    } catch (e) {
+      debugPrint('$e');
+    }
+  }
+
+
 
 
   /// Helper function which sets the [MenuItemData] for the [TimelineWidget].
@@ -80,7 +105,7 @@ class ScalableState extends State<Scalable> {
 
     return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading: true,
           title: const Text("SCALABLE"),
         ),
         body: SingleChildScrollView(
@@ -89,41 +114,51 @@ class ScalableState extends State<Scalable> {
               padding: const EdgeInsets.only(left: 30.0,right: 20.0),
               child: Column(
                   children: [
-                    IconButton(
-                        icon: const Icon(
-                          Icons.question_mark,
-                          color: Colors.green,
-                        ),
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: const Text('Search Hint'),
-                                  content: const Text('text'),
-                                  actions: <Widget>[
-                                    TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: const Text('close'))
-                                  ],
-                                );
-                              });
-                        }
-                    ),
-                      IconButton(
-                        icon: const Icon(
-                            Icons.search),
-                        onPressed: () async {
-                          await fetchPrincipal();
-                          timeline.gatherEntries(listPrincipal);
-                        },
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: IconButton(
+                          icon: const Icon(
+                            Icons.question_mark,
+                            color: Colors.green,
+                          ),
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text('Search Hint'),
+                                    content: const Text('Select the target,\nthen the era you wish to view.'),
+                                    actions: <Widget>[
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: const Text('close'))
+                                    ],
+                                  );
+                                });
+                          }
                       ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 40.0),
-                      child: Text('text'),
                     ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: OutlinedButton(
+                            onPressed: () async {
+                              await fetchPrincipal();
+                              await timeline.gatherEntries(listPrincipal);
+                            },
+                            child: const Text('All Items')
+                        ),
+                      ),
+
+                      OutlinedButton(
+                        onPressed: () async {
+                          //await fetchPrincipalByLocation(location: locations);
+                          await fetchPrincipalByDetailIds(spaceIds);
+                          await timeline.gatherEntries(listPrincipal);
+                        }, child: const Text('In Space')
+                      ),
+
                   ] + tail),
             ),
           ),
