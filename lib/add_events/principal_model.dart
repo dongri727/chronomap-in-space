@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:acorn_client/acorn_client.dart';
 
 import '../fetch/fetch_stars.dart';
+import '../lists/area_list.dart';
 import '../lists/epoch_list.dart';
 import '../serverpod_client.dart';
 import '../utils/choice_si_format.dart';
@@ -59,21 +60,34 @@ class PrincipalModel extends ChangeNotifier {
   int selectedStarId = 0;
   String chosenStar = '';
 
-  ///When Celestial Body Button is pushed
-  //Starsを取得する
-  Future<void> fetchStars() async {
-    await _fetchStarsRepository.fetchStarsInDetail();
-    currentDisplayList = _fetchStarsRepository.listDetailStars;
+  ///DropdownButton
+  String selectedArea = 'Universe';
+
+  void setArea(String? value) {
+    if (value != null) {
+      selectedArea = value;
+      keyZone = selectedArea;
+    }
     notifyListeners();
   }
+
+  //ZONEで絞り込んだ天体を取得する
+    String? keyZone;
+
+    Future<void> fetchStars(keyZone) async {
+    await _fetchStarsRepository.fetchStars(keyZone);
+    currentDisplayList = _fetchStarsRepository.listStars;
+    notifyListeners();
+  }
+
   //Chipを表示
   Widget buildItemWidget(dynamic item) {
     // Define a function to extract the key based on item type
     String extractKey(dynamic item) {
-      if (item is Detail) {
-        return item.mot;
-      } else if (item is Places) {
-        return item.place;
+      if (item is Stars) {
+        return item.star;
+/*      } else if (item is Places) {
+        return item.place;*/
       }
       return ""; // Default case if none of the types match
     }
@@ -101,8 +115,8 @@ class PrincipalModel extends ChangeNotifier {
 
   //追加して再表示
   Future<void> addAndFetchStars() async {
-    await _fetchStarsRepository.addDetailStarsAndFetch('stars_involved', newStar);
-    currentDisplayList = _fetchStarsRepository.listDetailStars;
+    await _fetchStarsRepository.addStarsAndFetch(newStar, keyZone!);
+    currentDisplayList = _fetchStarsRepository.listStars;
     starController.clear();
     notifyListeners();
   }
@@ -113,6 +127,7 @@ class PrincipalModel extends ChangeNotifier {
   }
 
   List<String> periods = epoch; //時代選択肢
+  List<String>  zone = area; //領域選択
 
   setNewName(text) {
     newName = text;
@@ -242,7 +257,7 @@ class PrincipalModel extends ChangeNotifier {
             principalId: principalId,
             annee: newAnnee,
             affair: newName,
-            location: 'Universe',
+            location: keyZone!,
             precise: chosenStar,
             latitude: 90.0,
             longitude: 0.0,
@@ -254,13 +269,27 @@ class PrincipalModel extends ChangeNotifier {
             principalId: principalId,
             annee: newAnnee,
             affair: newName,
-            location: 'Universe',
+            location: keyZone!,
             precise: chosenStar,
             xCoordinate: 0 * newCoefficient,
             yCoordinate: 1 * newCoefficient,
             zCoordinate: 0 * newCoefficient,
             coefficient: newCoefficient);
         await client.withGlobe.addWithGlobe(withGlobe);
+
+/*        //in space
+        var space = Space(
+            principalId: principalId,
+            annee: newAnnee,
+            affair: newName,
+            location: keyZone!,
+            distance: chosenStar,
+            xCoordinate: 0 * newCoefficient,
+            yCoordinate: 1 * newCoefficient,
+            zCoordinate: 0 * newCoefficient,
+            coefficient: newCoefficient);
+        await client.space.addSpace(space);*/
+
         return 0;
       } catch (e) {
         return 1;

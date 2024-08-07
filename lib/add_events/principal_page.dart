@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../lists/area_list.dart';
 import '../utils/blank_text_format.dart';
 import '../utils/button_format.dart';
 import '../utils/dropdown_button_format.dart';
@@ -170,40 +171,29 @@ class PrincipalPage extends StatelessWidget {
                             flex: 2,
                             child: Column(
                               children: [
-                                //todo 将来的に以下を実装
-/*                              Row(
-                                children: [
-                                  Expanded(
-                                    flex: 1,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: OutlinedButton(
-                                          child: const Text('Area'),
-                                          onPressed: () {
-                                            model.currentDisplayList = locationOptions;
-                                            print(locationOptions);
-                                            //model.buildItemWidget(item);
-                                          },
-                                        ),
-                                      )),
-                                  const Expanded(
-                                    flex: 1,
-                                      child: BlankTextBlackFormat(
-                                        text: 'text',
-                                      )
-                                        ),
-                                ],
-                              ),*/
                                 Row(
                                   children: [
+                                    Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(20.0),
+                                          child: CustomDropdownButton(
+                                            selectedValue: model.selectedArea,
+                                            options: model.zone,
+                                            onChanged: (value) {
+                                              model.setArea(value);
+                                            },
+                                          ),
+                                        )
+                                    ),
                                     Expanded(
                                         flex: 1,
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: OutlinedButton(
                                             child: const Text('Show Celestial Body Options'),
-                                            onPressed: () {
-                                              model.fetchStars();
+                                            onPressed: () async {
+                                              await model.fetchStars(model.keyZone);
                                             },
                                           ),
                                         )),

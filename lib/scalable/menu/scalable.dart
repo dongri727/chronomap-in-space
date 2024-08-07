@@ -7,6 +7,7 @@ import 'menu_data.dart';
 import 'menu_section.dart';
 
 class Scalable extends StatefulWidget {
+
   final List<Principal>? principal;
   const Scalable({ super.key, this.principal});
 
@@ -22,7 +23,7 @@ class ScalableState extends State<Scalable> {
   final MenuData _menu = MenuData();
 
   List<String> locations = ['Universe', 'Solar System', 'Milky Way', 'Other Galaxy'];
-  List<int> spaceIds = [1,4];
+  List<int> spaceCode = [686];
 
   List<Principal> listPrincipal = [];
   List<int> principalIds = [];
@@ -48,10 +49,11 @@ class ScalableState extends State<Scalable> {
   }
 
   ///fetch principal in Space
-  Future<void> fetchPrincipalByDetailIds(List<int>? detailIds) async {
+  Future<void> fetchPrincipalByDetailId({List<int>? detailIds}) async {
     try {
-      listPrincipal = await client.principal.getPrincipalByDetailIds(detailIds: detailIds);
+      listPrincipal = await client.principal.getPrincipalByDetailIds(detailIds: spaceCode);
       principalIds = listPrincipal.map((item) => item.id as int).toList();
+      setState(() {}); // データの更新をUIに反映させる
     } catch (e) {
       debugPrint('$e');
     }
@@ -154,7 +156,7 @@ class ScalableState extends State<Scalable> {
                       OutlinedButton(
                         onPressed: () async {
                           //await fetchPrincipalByLocation(location: locations);
-                          await fetchPrincipalByDetailIds(spaceIds);
+                          await fetchPrincipalByDetailId();
                           await timeline.gatherEntries(listPrincipal);
                         }, child: const Text('In Space')
                       ),

@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(12.0),
               child: OutlinedButton(
                 child: Text(
                   'Register Events',
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(12.0),
               child: OutlinedButton(
                 child: Text(
                   'Scalable View',
@@ -67,10 +67,25 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(12.0),
               child: OutlinedButton(
                 child: Text(
-                  'Voyager1',
+                  'Interstellar Missions',
+                  style: SpaceTheme.textTheme.bodyLarge,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Paths()));
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: OutlinedButton(
+                child: Text(
+                  'Planets & Asteroids Exploration',
                   style: SpaceTheme.textTheme.bodyLarge,
                 ),
                 onPressed: () {
