@@ -22,6 +22,10 @@ class PrincipalModel extends ChangeNotifier {
   TextEditingController dayController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController starController = TextEditingController();
+  TextEditingController hecXController = TextEditingController();
+  TextEditingController hecYController = TextEditingController();
+  TextEditingController hecZController = TextEditingController();
+  TextEditingController julianDController = TextEditingController();
 
   double log10(num x) => log(x) / ln10;
 
@@ -35,6 +39,11 @@ class PrincipalModel extends ChangeNotifier {
   late double newCoefficient; //座標係数
   var newName = ''; //事象名
   var calendarNo = 0; //時代コード
+  var hecX =0.0;
+  var hecY =0.0;
+  var hecZ =0.0;
+  var julianD = 0;
+
 
   List<dynamic> currentDisplayList = [];
 
@@ -44,14 +53,6 @@ class PrincipalModel extends ChangeNotifier {
   String selectedLocation = '';
   int selectedLocationId = 0;
   String chosenLocation ='';
-
-  ///When Area Button is pushed
-  //currentDisplayListを設定
-  //Chipを表示
-  //選ばれたものをLocationに設定
-
-
-
 
   var newStar = '';
   final List<String> filtersStars= <String>[];
@@ -172,6 +173,42 @@ class PrincipalModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  setHecX(value) {
+    try {
+      hecX = double.parse(value);
+    } catch (e) {
+      hecX = 0.0;
+    }
+    notifyListeners();
+  }
+
+  setHecY(value) {
+    try {
+      hecX = double.parse(value);
+    } catch (e) {
+      hecY = 0.0;
+    }
+    notifyListeners();
+  }
+
+  setHecZ(value) {
+    try {
+      hecX = double.parse(value);
+    } catch (e) {
+      hecZ = 0.0;
+    }
+    notifyListeners();
+  }
+
+  setJulianD(value) {
+    try {
+      julianD = int.parse(value);
+    } catch (e) {
+      julianD = 0;
+    }
+    notifyListeners();
+  }
+
 
   /// convert the years depending on the selected calendar period
   void convertPoint() {
@@ -284,10 +321,10 @@ class PrincipalModel extends ChangeNotifier {
             affair: newName,
             location: keyZone!,
             distance: chosenStar,
-            xCoordinate: 0 * newCoefficient,
-            yCoordinate: 1 * newCoefficient,
-            zCoordinate: 0 * newCoefficient,
-            coefficient: newCoefficient);
+            hecX: hecX,
+            hecY: hecY,
+            hecZ: hecZ,
+            julianD: julianD);
         await client.space.addSpace(space);*/
 
         return 0;

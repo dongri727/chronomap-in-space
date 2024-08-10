@@ -5,6 +5,7 @@ import '../utils/blank_text_format.dart';
 import '../utils/button_format.dart';
 import '../utils/dropdown_button_format.dart';
 import '../utils/format_grey.dart';
+import '../utils/shadowed_container.dart';
 import '../utils/tff_format.dart';
 import 'principal_model.dart';
 
@@ -276,10 +277,64 @@ class PrincipalPage extends StatelessWidget {
                                   ),
                                 ],
                               ),*/
+                                const Padding(
+                                    padding: EdgeInsets.fromLTRB(20, 50, 20, 20),
+                                    child: Text('Please enter the Heliocentric Ecliptic Coordinates and Julian Day if you may know')
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TffFormat(
+                                    hintText: 'X, 50.1234',
+                                    onChanged: (value) {
+                                      model.setHecX(value);
+                                      print(model.hecX);
+                                    },
+                                    tffColor1: Colors.black54,
+                                    tffColor2: const Color(0x99e6e6fa),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TffFormat(
+                                    hintText: 'Y, 50.1234',
+                                    onChanged: (value) {
+                                      model.setHecY(value);
+                                    },
+                                    tffColor1: Colors.black54,
+                                    tffColor2: const Color(0x99e6e6fa),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TffFormat(
+                                    hintText: 'Z, 50.1234',
+                                    onChanged: (value) {
+                                      model.setHecZ(value);
+                                      print(model.hecZ);
+                                    },
+                                    tffColor1: Colors.black54,
+                                    tffColor2: const Color(0x99e6e6fa),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TffFormat(
+                                    hintText: 'JD, 2460529',
+                                    onChanged: (value) {
+                                      model.setJulianD(value);
+                                      print(model.julianD);
+                                    },
+                                    tffColor1: Colors.black54,
+                                    tffColor2: const Color(0x99e6e6fa),
+                                  ),
+                                ),
                               ],
                             )
                         )
                       ]),
+
+
+
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Wrap(
@@ -289,7 +344,6 @@ class PrincipalPage extends StatelessWidget {
                       }).toList(),
                     ),
                   ),
-
                 ],
               ),
             ),

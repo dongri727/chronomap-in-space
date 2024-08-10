@@ -1,4 +1,5 @@
 import 'package:chronomap_in_space/3d_paths.dart';
+import 'package:chronomap_in_space/terrestrial_planets.dart';
 import 'package:flutter/material.dart';
 import 'add_events/principal_page.dart';
 import 'scalable/menu/scalable.dart';
@@ -85,14 +86,14 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(12.0),
               child: OutlinedButton(
                 child: Text(
-                  'Planets & Asteroids Exploration',
+                  'Terrestrial Planets & Asteroids',
                   style: SpaceTheme.textTheme.bodyLarge,
                 ),
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Paths()));
+                          builder: (context) => const Planets()));
                 },
               ),
             ),

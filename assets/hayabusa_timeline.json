@@ -1,0 +1,6 @@
+[
+  {"value": [0, 0, 2450], "name": "Sun", "itemStyle": {"color": "red"}},
+  {"value": [-4.4, 1.4, 2452], "name": "launch", "itemStyle": {"color": "green"}},
+  {"value": [3.6, 1.8, 2454], "name": "itokawa", "itemStyle": {"color": "green"}},
+  {"value": [-2.4, -1.5, 2455], "name": "return", "itemStyle": {"color": "green"}}
+]

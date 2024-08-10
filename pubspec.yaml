@@ -72,6 +72,9 @@ flutter:
     - assets/voyager1.json
     - assets/voyager2.json
     - assets/pioneer10.json
+    - assets/hayabusa_timeline.json
+    - assets/cassini_timeline.json
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
