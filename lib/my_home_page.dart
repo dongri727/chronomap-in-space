@@ -14,97 +14,110 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       body: Center(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
-              child: Text(
-                'ChronoMap',
-                style: SpaceTheme.textTheme.headlineLarge,
-              ),
+        child: Container(
+          constraints: const BoxConstraints.expand( ),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/main.png'),
+              fit: BoxFit.cover,
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 100),
-              child: Text(
-                textAlign: TextAlign.center,
-                'A 4D Journey\nThrough Time and Space',
-                style: SpaceTheme.textTheme.bodyLarge,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: OutlinedButton(
+          ),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 100),
                 child: Text(
-                  'Register Events',
-                  style: SpaceTheme.textTheme.bodyLarge,
+                  'ChronoMap',
+                  style: SpaceTheme.textTheme.titleMedium,
                 ),
-                onPressed: (){
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const PrincipalPage()));
-                },
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: OutlinedButton(
+              Padding(
+                padding: const EdgeInsets.only(bottom: 100),
                 child: Text(
-                  'Scalable View',
-                  style: SpaceTheme.textTheme.bodyLarge,
+                  'in Cosmos',
+                  style: SpaceTheme.textTheme.titleSmall,
                 ),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Scalable()));
-                },
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: OutlinedButton(
+/*              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 100),
                 child: Text(
-                  'Interstellar Missions',
-                  style: SpaceTheme.textTheme.bodyLarge,
+                  textAlign: TextAlign.center,
+                  'A 4D Journey\nThrough Time and Space',
+                  style: SpaceTheme.textTheme.headlineMedium,
                 ),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Paths()));
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: OutlinedButton(
-                child: Text(
-                  'Terrestrial Planets & Asteroids',
-                  style: SpaceTheme.textTheme.bodyLarge,
+              ),*/
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: OutlinedButton(
+                  child: Text(
+                    'Register Events',
+                    style: SpaceTheme.textTheme.headlineMedium,
+                  ),
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PrincipalPage()));
+                  },
                 ),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Planets()));
-                },
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
-              child: Text(
-                'Space-specific Edition',
-                style: SpaceTheme.textTheme.headlineLarge,
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: OutlinedButton(
+                  child: Text(
+                    'Scalable View',
+                    style: SpaceTheme.textTheme.headlineMedium,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Scalable()));
+                  },
+                ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: OutlinedButton(
+                  child: Text(
+                    'Interstellar Missions',
+                    style: SpaceTheme.textTheme.headlineMedium,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Paths()));
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: OutlinedButton(
+                  child: Text(
+                    'Terrestrial Planets & Asteroids',
+                    style: SpaceTheme.textTheme.headlineMedium,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Planets()));
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -8,11 +8,11 @@ class SpaceTheme {
     titleMedium: GoogleFonts.hinaMincho(
         fontSize: 80, fontWeight: FontWeight.bold, color: const Color(0xFFf5f5f5)),//white
     titleSmall: GoogleFonts.hinaMincho(
-        fontSize: 60, fontWeight: FontWeight.bold, color: const Color(0xFF006400)),//green
+        fontSize: 60, fontWeight: FontWeight.bold, color: const Color(0xFFffd700)),//green
     headlineLarge: GoogleFonts.hinaMincho(
         fontSize: 50, fontWeight: FontWeight.normal, color: const Color(0xFF006400)),//white
     headlineMedium: GoogleFonts.hinaMincho(
-        fontSize: 18, fontWeight: FontWeight.normal, color: const Color(0xFFf5f5f5)),//white
+        fontSize: 30, fontWeight: FontWeight.normal, color: const Color(0xFFf5f5f5)),//white
     headlineSmall: GoogleFonts.hinaMincho(
         fontSize: 16, fontWeight: FontWeight.normal, color: const Color(0xFFa9a9a9)),//gray
     bodyLarge: GoogleFonts.hinaMincho(

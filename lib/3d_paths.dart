@@ -26,9 +26,9 @@ class PathsState extends State<Paths> {
   }
 
   Future<void> _loadData() async {
-    final voyager1Data = await rootBundle.loadString('assets/voyager1.json');
-    final voyager2Data = await rootBundle.loadString('assets/voyager2.json');
-    final pioneer10Data = await rootBundle.loadString('assets/pioneer10.json');
+    final voyager1Data = await rootBundle.loadString('assets/json/voyager1.json');
+    final voyager2Data = await rootBundle.loadString('assets/json/voyager2.json');
+    final pioneer10Data = await rootBundle.loadString('assets/json/pioneer10.json');
     setState(() {
       List<dynamic> combineData = [];
       combineData.addAll(json.decode(voyager1Data));

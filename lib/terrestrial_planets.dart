@@ -23,7 +23,7 @@ class PlanetsState extends State<Planets> {
   }
 
   Future<void> _loadData() async {
-    final String jsonString = await rootBundle.loadString('assets/cassini_timeline.json');
+    final String jsonString = await rootBundle.loadString('assets/json/cassini_timeline.json');
     final List<dynamic> jsonData = json.decode(jsonString);
     setState(() {
       cassini = jsonData;
