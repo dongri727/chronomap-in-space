@@ -110,58 +110,71 @@ class ScalableState extends State<Scalable> {
           automaticallyImplyLeading: true,
           title: const Text("SCALABLE"),
         ),
-        body: SingleChildScrollView(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 30.0,right: 20.0),
-              child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: IconButton(
-                          icon: const Icon(
-                            Icons.question_mark,
-                            color: Colors.green,
-                          ),
-                          onPressed: () {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: const Text('Search Hint'),
-                                    content: const Text('Select the target,\nthen the era you wish to view.'),
-                                    actions: <Widget>[
-                                      TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: const Text('close'))
-                                    ],
-                                  );
-                                });
-                          }
-                      ),
-                    ),
+        body: Container(
+          constraints: const BoxConstraints.expand( ),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/space.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: SingleChildScrollView(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 30.0,right: 20.0),
+                child: Column(
+                    children: [
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: OutlinedButton(
-                            onPressed: () async {
-                              await fetchPrincipal();
-                              await timeline.gatherEntries(listPrincipal);
-                            },
-                            child: const Text('All Items')
+                        padding: const EdgeInsets.all(20.0),
+                        child: IconButton(
+                            icon: const Icon(
+                              Icons.question_mark,
+                              color: Colors.blue,
+                            ),
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text('Search Hint'),
+                                      content: const Text('Select the target,\nthen the era you wish to view.'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Text('close'))
+                                      ],
+                                    );
+                                  });
+                            }
                         ),
                       ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: OutlinedButton(
+                              onPressed: () async {
+                                await fetchPrincipal();
+                                await timeline.gatherEntries(listPrincipal);
+                              },
+                              child: const Text('All Items',
+                                style: TextStyle(color: Colors.white, fontSize: 20),
+                              )
+                          ),
+                        ),
 
-                      OutlinedButton(
-                        onPressed: () async {
-                          //await fetchPrincipalByLocation(location: locations);
-                          await fetchPrincipalByDetailId();
-                          await timeline.gatherEntries(listPrincipal);
-                        }, child: const Text('In Space')
-                      ),
+                        OutlinedButton(
+                          onPressed: () async {
+                            //await fetchPrincipalByLocation(location: locations);
+                            await fetchPrincipalByDetailId();
+                            await timeline.gatherEntries(listPrincipal);
+                          }, child: const Text('In Space',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        )
+                        ),
 
-                  ] + tail),
+                    ] + tail),
+              ),
             ),
           ),
         )

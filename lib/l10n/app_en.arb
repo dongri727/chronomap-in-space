@@ -1,4 +1,27 @@
 {
   "@@locale": "en",
-  "cover": "assets/images/cover_en.png"
+  "cover": "assets/images/cover_en.png",
+  "infoA": "This is an application specialized in the input and output of data related to the universe from the \"ChronoMap\". The \"ChronoMap\" is a database that encompasses all historical events from the origin of the universe to the endless 'now,' without regard to field. It aims to accurately display temporal and spatial distances, with 'when' and 'where' as mandatory items.",
+  "infoB": "Web version of \"ChronoMap\"",
+  "infoC": "Web version of three-dimensional and four-dimensional views",
+  "infoD": "How to use the \"ChronoMap\"",
+  "infoE": "This app does not acquire any of your personal information, nor does it track or use information on your device.",
+  "infoF": "The historical information you register is not linked to you. There are no records of what you register or search for.",
+  "infoG": "Information contrary to the purpose of the \"ChronoMap\" will be handled by the administrator as follows.\n1. Correction\n2. Viewing stop (may be made public in the future)\n3. Deletion",
+  "infoH": "The historical information you register is treated as a public good, and you yourself cannot delete it. Please be careful not to write personal information. If you want to delete information registered by mistake or find information that should be deleted, please contact the following address.",
+  "infoI": "We are looking for people to join us in developing the \"ChronoMap.\" If you are an engineer who can handle Flutter, AWS, PostgreSQL, Unity, etc., or can assist with data entry and correction, please contact us below.",
+  "infoJ": "when.where.what.database727@gmail.com",
+  "addHintA": "In the \"ChronoMap\", a historical event refers to a single occurrence with information on \"when and where.\" For example, \"Saturn Exploration by Cassini\" is not considered a single occurrence. The registration would be \"September 15, 2017: Cassini Probe Enters Saturn’s Atmosphere, Solar System, Saturn.\" If you want to make this searchable as \"Saturn Exploration by Cassini,\" please add the term \"Cassini-Huygens\" in the web version of the \"ChronoMap\".",
+  "addHintB": "Due to the confirmation work of location information, three-dimensional displays of space-related data are not updated in real-time. To expedite the work, we would appreciate your cooperation in inputting heliocentric ecliptic coordinates, Julian dates, galactic coordinates, light-year distances, etc., if possible.",
+  "addHintC": "For launch information of probes, etc., we would appreciate it if you could specify the launch site in addition to \"Solar System\" and \"Earth.\"",
+  "indexA": "Register Events",
+  "indexB": "Scalable View",
+  "indexC": "Database 3D View",
+  "indexD": "Interstellar Missions",
+  "indexE": "Planetary Exploration",
+  "name": "Event(within 50 letters)",
+  "showOptions": "Show Options",
+  "newWord": "another Celestrial Body or Space Probe you want",
+  "addWord": "add a new word",
+  "ifYouMayKnow": "Please enter if you may know"
 }

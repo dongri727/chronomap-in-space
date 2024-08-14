@@ -26,6 +26,10 @@ class PrincipalModel extends ChangeNotifier {
   TextEditingController hecYController = TextEditingController();
   TextEditingController hecZController = TextEditingController();
   TextEditingController julianDController = TextEditingController();
+  TextEditingController gLatController = TextEditingController();
+  TextEditingController gLonController = TextEditingController();
+  TextEditingController lightYearController = TextEditingController();
+  TextEditingController launchSiteController = TextEditingController();
 
   double log10(num x) => log(x) / ln10;
 
@@ -43,6 +47,10 @@ class PrincipalModel extends ChangeNotifier {
   var hecY =0.0;
   var hecZ =0.0;
   var julianD = 0;
+  var gLat = 0.0;
+  var gLon = 0.0;
+  var lightYear = 0.0;
+  var launchSite = '';
 
 
   List<dynamic> currentDisplayList = [];
@@ -87,8 +95,6 @@ class PrincipalModel extends ChangeNotifier {
     String extractKey(dynamic item) {
       if (item is Stars) {
         return item.star;
-/*      } else if (item is Places) {
-        return item.place;*/
       }
       return ""; // Default case if none of the types match
     }
@@ -209,6 +215,40 @@ class PrincipalModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  setGLat(value) {
+    try {
+      gLat = double.parse(value);
+    } catch (e) {
+      gLat= 0.0;
+    }
+    notifyListeners();
+  }
+
+  setGLon(value) {
+    try {
+      gLon = double.parse(value);
+    } catch (e) {
+      gLon = 0.0;
+    }
+    notifyListeners();
+  }
+
+  setLightYear(value) {
+    try {
+      lightYear = double.parse(value);
+    } catch (e) {
+      lightYear = 0.0;
+    }
+    notifyListeners();
+  }
+
+  setLaunchSite(text) {
+    launchSite = text;
+    notifyListeners();
+  }
+
+
+
 
   /// convert the years depending on the selected calendar period
   void convertPoint() {
@@ -284,7 +324,7 @@ class PrincipalModel extends ChangeNotifier {
           day: newDay,
           point: newPoint,
           affair: newName,
-          location: 'Universe',
+          location: keyZone!,
           precise: chosenStar,
         );
         var principalId = await client.principal.addPrincipal(principal);
@@ -314,18 +354,25 @@ class PrincipalModel extends ChangeNotifier {
             coefficient: newCoefficient);
         await client.withGlobe.addWithGlobe(withGlobe);
 
-/*        //in space
+        //in space
         var space = Space(
             principalId: principalId,
             annee: newAnnee,
+            month: newMonth,
+            day: newDay,
+            point: newPoint,
             affair: newName,
             location: keyZone!,
-            distance: chosenStar,
+            precise: chosenStar,
             hecX: hecX,
             hecY: hecY,
             hecZ: hecZ,
-            julianD: julianD);
-        await client.space.addSpace(space);*/
+            julianD: julianD,
+            gLat: gLat,
+            gLon: gLon,
+            lightYear: lightYear,
+        );
+        await client.space.addSpace(space);
 
         return 0;
       } catch (e) {

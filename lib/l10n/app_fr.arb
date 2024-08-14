@@ -1,4 +1,27 @@
 {
   "@@locale": "fr",
-  "cover": "assets/images/cover_fr.png"
+  "cover": "assets/images/cover_fr.png",
+  "infoA": "Il s'agit d'une application spécialisée dans l'entrée et la sortie de données liées à l'univers de la \"ChronoMap\". La \"ChronoMap\" est une base de données qui englobe tous les événements historiques depuis l'origine de l'univers jusqu'à l'éternel 'maintenant,' sans égard au domaine. Elle vise à afficher correctement les distances temporelles et spatiales, avec 'quand' et 'où' comme éléments obligatoires.",
+  "infoB": "Version web de la \"ChronoMap\"",
+  "infoC": "Version web des vues tridimensionnelles et quadridimensionnellesn",
+  "infoD": "Comment utiliser la \"ChronoMap\"",
+  "infoE": "Cette application ne récupère aucune de vos informations personnelles, ni ne suit ni n'utilise les informations de votre appareil.",
+  "infoF": "Les informations historiques que vous enregistrez ne vous sont pas liées. Il n'y a pas d'enregistrement de ce que vous inscrivez ou recherchez.",
+  "infoG": "Les informations contraires aux objectifs de la \"ChronoMap\" seront traitées par l'administrateur de la manière suivante.\n1. Correction\n2. Arrêt de la visualisation (peut être rendu public à l'avenir)\n3. Suppression",
+  "infoH": "Les informations historiques que vous enregistrez sont traitées comme un bien public, et vous-même ne pouvez pas les supprimer. Veuillez faire attention à ne pas écrire d'informations personnelles. Si vous souhaitez supprimer des informations enregistrées par erreur ou trouver des informations qui devraient être supprimées, veuillez contacter l'adresse suivante.",
+  "infoI": "Nous recherchons des personnes pour nous rejoindre dans le développement de la \"ChronoMap.\" Si vous êtes un ingénieur capable de gérer Flutter, AWS, PostgreSQL, Unity, etc., ou pouvez aider à la saisie et à la correction des données, veuillez nous contacter ci-dessous.",
+  "infoJ": "when.where.what.database727@gmail.com",
+  "addHintA": "Dans la \"ChronoMap\", un événement historique fait référence à une occurrence unique avec des informations sur \"quand et où.\" Par exemple, \"L'exploration de Saturne par Cassini\" n'est pas considéré comme une occurrence unique. L'inscription serait \"15 septembre 2017 : Cassini entre dans l'atmosphère de Saturne, Système Solaire, Saturne.\" Si vous souhaitez rendre cela consultable sous \"L'exploration de Saturne par Cassini,\" veuillez ajouter le terme \"Cassini-Huygens\" dans la version web de la \"ChronoMap\".",
+  "addHintB": "En raison du travail de confirmation des informations de localisation, les affichages tridimensionnels des données liées à l'espace ne sont pas mis à jour en temps réel. Pour accélérer le travail, nous apprécierions votre coopération en saisissant les coordonnées écliptiques héliocentriques, les dates juliennes, les coordonnées galactiques, les distances en années-lumière, etc., si possible.",
+  "addHintC": "Pour les informations de lancement de sondes, etc., nous vous serions reconnaissants de bien vouloir spécifier le site de lancement en plus de \"Système Solaire\" et \"Terre.\"",
+  "indexA": "Enregistrer des Evénements",
+  "indexB": "Vue Evolutive",
+  "indexC": "Vue 3D de la base de données",
+  "indexD": "Missions Interstellaires",
+  "indexE": "Exploration Planétaire",
+  "name": "Evénement(dans les 50 lettres)",
+  "showOptions": "Efficher et sélectionner des options",
+  "newWord": "Entrez le nom de l'objet céleste ou de la sonde manquant",
+  "addWord": "Ajouter le mot",
+  "ifYouMayKnow": "Si possible, veuillez également entrer les informations suivantes"
 }

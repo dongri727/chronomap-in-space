@@ -35,10 +35,13 @@ class CustomTextContainer extends StatelessWidget {
 }
 
 class LaunchUrlContainer extends StatelessWidget {
-  final String textContent = 'Ecole la Porte Privacy Policy';
+  final String textContent;
+  final String url;
 
   const LaunchUrlContainer({
     super.key,
+    required this.textContent,
+    required this.url,
   });
 
   @override
@@ -69,9 +72,9 @@ class LaunchUrlContainer extends StatelessWidget {
     );
   }
   Future<void> onLaunchUrl() async {
-    final Uri url = Uri.parse('https://laporte727.github.io/ecole.la.porte/chronomap.html');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
+    final Uri parsedUrl = Uri.parse(url);
+    if (await canLaunchUrl(parsedUrl)) {
+      await launchUrl(parsedUrl);
     } else {
       // エラーハンドリング: URLを開けない場合の処理
     }

@@ -1,3 +1,4 @@
+import 'package:chronomap_in_space/hints/add_hint_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../lists/area_list.dart';
@@ -8,6 +9,7 @@ import '../utils/format_grey.dart';
 import '../utils/shadowed_container.dart';
 import '../utils/tff_format.dart';
 import 'principal_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PrincipalPage extends StatelessWidget {
   const PrincipalPage({super.key});
@@ -22,6 +24,16 @@ class PrincipalPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: const Text('Register an Event'),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AddHintPage()));
+                  },
+                  icon: const Icon(Icons.question_mark, color: Colors.blue,))
+            ],
           ),
           floatingActionButton: FloatingActionButton.extended(
               onPressed: () async {
@@ -54,297 +66,391 @@ class PrincipalPage extends StatelessWidget {
                 model.showCustomDialog(context, title, content);
               },
               label: const Text('SAVE')),
-          body: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
-                            child: Text('WHAT',
-                              style: TextStyle(
-                                fontSize: 24,
+          body: Container(
+            constraints: const BoxConstraints.expand(),
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/main.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        const Expanded(
+                            flex: 1,
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
+                              child: Text('WHAT',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                ),
                               ),
-                            ),
-                          )),
-                      Expanded(flex: 2,
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: TffFormat(
-                              hintText: 'Event(within 50 letters)',
-                              onChanged: (text) {
-                                model.setNewName(text);
-                              },
-                              tffColor1: const Color(0xFF2f4f4f),
-                              tffColor2: const Color(0x99e6e6fa),
-                            ),
-                          ))
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
-                            child: Text(
-                              'WHEN',
-                              style: TextStyle(
-                                fontSize: 24,
+                            )),
+                        Expanded(flex: 2,
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: TffFormat(
+                                hintText: AppLocalizations.of(context)!.name,
+                                onChanged: (text) {
+                                  model.setNewName(text);
+                                },
+                                tffColor1: const Color(0xFF2f4f4f),
+                                tffColor2: const Color(0x99e6e6fa),
                               ),
-                            ),
-                          )),
-                      Expanded(
-                          flex: 2,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                  flex: 2,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: CustomDropdownButton(
-                                      selectedValue: model.selectedCalendar,
-                                      options: model.periods,
-                                      onChanged: (value) {
-                                        model.setCalendar(value);
-                                      },
-                                    ),
-                                  )
-                              ),
-                              Expanded(
-                                  flex: 1,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: TffFormat(
-                                      hintText: 'year',
-                                      onChanged: (value) {
-                                        model.setNewYearD(value);
-                                      },
-                                      tffColor1: Colors.black54,
-                                      tffColor2: const Color(0x99e6e6fa),
-                                    ),
-                                  )),
-                              Expanded(
-                                  flex: 1,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: TffFormat(
-                                      hintText: 'Month 1-12 or 0',
-                                      onChanged: (value) {
-                                        model.setNewMonth(value);
-                                      },
-                                      tffColor1: Colors.black54,
-                                      tffColor2: const Color(0x99e6e6fa),
-                                    ),
-                                  )),
-                              Expanded(
-                                flex: 1,
-                                child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(8, 8, 20, 8),
-                                    child: TffFormat(
-                                      hintText: 'Date 1-31 or 0',
-                                      onChanged: (value) {
-                                        model.setNewDay(value);
-                                      },
-                                      tffColor1: Colors.black54,
-                                      tffColor2: const Color(0x99e6e6fa),
-                                    )),
-                              )
-                            ],
-                          ))
-                    ],
-                  ),
-                  Row(
+                            ))
+                      ],
+                    ),
+                    Row(
                       children: [
                         const Expanded(
                             flex: 1,
                             child: Padding(
                               padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
                               child: Text(
-                                'WHERE',
-                                style: TextStyle(fontSize: 24),
+                                'WHEN',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                ),
                               ),
                             )),
                         Expanded(
                             flex: 2,
-                            child: Column(
+                            child: Row(
                               children: [
-                                Row(
-                                  children: [
-                                    Expanded(
-                                        flex: 1,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(20.0),
-                                          child: CustomDropdownButton(
-                                            selectedValue: model.selectedArea,
-                                            options: model.zone,
-                                            onChanged: (value) {
-                                              model.setArea(value);
+                                Expanded(
+                                    flex: 2,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: ShadowedContainer(
+                                        child: CustomDropdownButton(
+                                          selectedValue: model.selectedCalendar,
+                                          options: model.periods,
+                                          onChanged: (value) {
+                                            model.setCalendar(value);
+                                          },
+                                        ),
+                                      ),
+                                    )
+                                ),
+                                Expanded(
+                                    flex: 1,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: TffFormat(
+                                        hintText: 'year',
+                                        onChanged: (value) {
+                                          model.setNewYearD(value);
+                                        },
+                                        tffColor1: Colors.black54,
+                                        tffColor2: const Color(0x99e6e6fa),
+                                      ),
+                                    )),
+                                Expanded(
+                                    flex: 1,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: TffFormat(
+                                        hintText: 'Month 1-12 or 0',
+                                        onChanged: (value) {
+                                          model.setNewMonth(value);
+                                        },
+                                        tffColor1: Colors.black54,
+                                        tffColor2: const Color(0x99e6e6fa),
+                                      ),
+                                    )),
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                      padding: const EdgeInsets.fromLTRB(8, 8, 20, 8),
+                                      child: TffFormat(
+                                        hintText: 'Date 1-31 or 0',
+                                        onChanged: (value) {
+                                          model.setNewDay(value);
+                                        },
+                                        tffColor1: Colors.black54,
+                                        tffColor2: const Color(0x99e6e6fa),
+                                      )),
+                                )
+                              ],
+                            ))
+                      ],
+                    ),
+                    Row(
+                        children: [
+                          const Expanded(
+                              flex: 1,
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
+                                child: Text(
+                                  'WHERE',
+                                  style: TextStyle(fontSize: 24),
+                                ),
+                              )),
+                          Expanded(
+                              flex: 2,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                          flex: 1,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(20.0),
+                                            child: ShadowedContainer(
+                                              child: CustomDropdownButton(
+                                                selectedValue: model.selectedArea,
+                                                options: model.zone,
+                                                onChanged: (value) {
+                                                  model.setArea(value);
+                                                },
+                                              ),
+                                            ),
+                                          )
+                                      ),
+                                      Expanded(
+                                          flex: 2,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: ButtonFormat(
+                                              label: AppLocalizations.of(context)!.showOptions,
+                                              onPressed: () async {
+                                                await model.fetchStars(model.keyZone);
+                                              },
+                                            ),
+                                          )),
+                                      Expanded(
+                                          flex: 2,
+                                          child: BlankTextFormat(
+                                            text: model.chosenStar,
+                                          )
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 3,
+                                        child: Padding(padding: const EdgeInsets.all(8.0),
+                                          child: FormatGrey(
+                                            controller: model.starController,
+                                            hintText: AppLocalizations.of(context)!.newWord,
+                                            onChanged: (text) {
+                                              model.setNewStar(text);
                                             },
                                           ),
-                                        )
-                                    ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 2,
+                                        child: Padding(
+                                          padding: const EdgeInsets.fromLTRB(8, 8, 20, 8),
+                                          child: ButtonFormat(
+                                            label: AppLocalizations.of(context)!.addWord,
+                                            onPressed: () async {
+                                              model.addAndFetchStars();
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  //todo 将来的に以下を実装
+            /*                              Row(
+                                  children: [
                                     Expanded(
                                         flex: 1,
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: OutlinedButton(
-                                            child: const Text('Show Celestial Body Options'),
-                                            onPressed: () async {
-                                              await model.fetchStars(model.keyZone);
-                                            },
+                                            child: const Text('Launch Site'),
+                                            onPressed: () {},
                                           ),
                                         )),
-                                    Expanded(
+                                    const Expanded(
                                         flex: 1,
                                         child: BlankTextBlackFormat(
-                                          text: model.chosenStar,
+                                          text: 'text',
                                         )
                                     ),
                                   ],
-                                ),
-                                Row(
+                                ),*/
+            /*                              Row(
                                   children: [
                                     Expanded(
-                                      flex: 3,
+                                      flex: 2,
                                       child: Padding(padding: const EdgeInsets.all(8.0),
                                         child: FormatGrey(
                                           controller: model.starController,
-                                          hintText: 'another Celestial Body You Want',
+                                          hintText: 'another Launch Site You Want',
                                           onChanged: (text) {
-                                            model.setNewStar(text);
+
                                           },
                                         ),
                                       ),
                                     ),
                                     Expanded(
-                                      flex: 2,
-                                      child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(8, 8, 20, 8),
-                                        child: ButtonFormat(
-                                          label: 'Add a New Celestial Body',
-                                          onPressed: () async {
-                                            model.addAndFetchStars();
-                                          },
-                                        ),
+                                      flex: 1,
+                                      child: ButtonFormat(
+                                        label: 'Add a New Launch Site',
+                                        onPressed: () {},
                                       ),
                                     ),
                                   ],
-                                ),
-                                //todo 将来的に以下を実装
-/*                              Row(
-                                children: [
-                                  Expanded(
-                                      flex: 1,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: OutlinedButton(
-                                          child: const Text('Launch Site'),
-                                          onPressed: () {},
+                                ),*/
+                                  Padding(
+                                      padding: const EdgeInsets.fromLTRB(20, 50, 20, 20),
+                                      child: ShadowedContainer(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(AppLocalizations.of(context)!.ifYouMayKnow),
+                                          ))
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: TffFormat(
+                                            hintText: 'HEC X, 1.2345+Ex7',
+                                            onChanged: (value) {
+                                              model.setHecX(value);
+                                              print(model.hecX);
+                                            },
+                                            tffColor1: Colors.black54,
+                                            tffColor2: const Color(0x99e6e6fa),
+                                          ),
                                         ),
-                                      )),
-                                  const Expanded(
-                                      flex: 1,
-                                      child: BlankTextBlackFormat(
-                                        text: 'text',
-                                      )
-                                  ),
-                                ],
-                              ),*/
-/*                              Row(
-                                children: [
-                                  Expanded(
-                                    flex: 2,
-                                    child: Padding(padding: const EdgeInsets.all(8.0),
-                                      child: FormatGrey(
-                                        controller: model.starController,
-                                        hintText: 'another Launch Site You Want',
-                                        onChanged: (text) {
-
-                                        },
                                       ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: TffFormat(
+                                            hintText: 'HEC Y, 1.2345+Ex7',
+                                            onChanged: (value) {
+                                              model.setHecY(value);
+                                            },
+                                            tffColor1: Colors.black54,
+                                            tffColor2: const Color(0x99e6e6fa),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: TffFormat(
+                                            hintText: 'HEC Z, 1.2345+Ex7',
+                                            onChanged: (value) {
+                                              model.setHecZ(value);
+                                              print(model.hecZ);
+                                            },
+                                            tffColor1: Colors.black54,
+                                            tffColor2: const Color(0x99e6e6fa),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: TffFormat(
+                                            hintText: 'JD, 2460529',
+                                            onChanged: (value) {
+                                              model.setJulianD(value);
+                                              print(model.julianD);
+                                            },
+                                            tffColor1: Colors.black54,
+                                            tffColor2: const Color(0x99e6e6fa),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: TffFormat(
+                                            hintText: 'Galaxy Latitude',
+                                            onChanged: (value) {
+                                              model.setGLat(value);
+                                            },
+                                            tffColor1: Colors.black54,
+                                            tffColor2: const Color(0x99e6e6fa),
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: TffFormat(
+                                            hintText: 'Galaxy Longitude',
+                                            onChanged: (value) {
+                                              model.setGLon(value);
+                                            },
+                                            tffColor1: Colors.black54,
+                                            tffColor2: const Color(0x99e6e6fa),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TffFormat(
+                                      hintText: 'Light Year',
+                                      onChanged: (value) {
+                                        model.setLightYear(value);
+                                        print(model.lightYear);
+                                      },
+                                      tffColor1: Colors.black54,
+                                      tffColor2: const Color(0x99e6e6fa),
                                     ),
                                   ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: ButtonFormat(
-                                      label: 'Add a New Launch Site',
-                                      onPressed: () {},
+/*                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TffFormat(
+                                      hintText: 'Launch Site',
+                                      onChanged: (text) {
+                                        model.setLaunchSite(text);
+                                      },
+                                      tffColor1: Colors.black54,
+                                      tffColor2: const Color(0x99e6e6fa),
                                     ),
-                                  ),
+                                  ),*/
                                 ],
-                              ),*/
-                                const Padding(
-                                    padding: EdgeInsets.fromLTRB(20, 50, 20, 20),
-                                    child: Text('Please enter the Heliocentric Ecliptic Coordinates and Julian Day if you may know')
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: TffFormat(
-                                    hintText: 'X, 50.1234',
-                                    onChanged: (value) {
-                                      model.setHecX(value);
-                                      print(model.hecX);
-                                    },
-                                    tffColor1: Colors.black54,
-                                    tffColor2: const Color(0x99e6e6fa),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: TffFormat(
-                                    hintText: 'Y, 50.1234',
-                                    onChanged: (value) {
-                                      model.setHecY(value);
-                                    },
-                                    tffColor1: Colors.black54,
-                                    tffColor2: const Color(0x99e6e6fa),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: TffFormat(
-                                    hintText: 'Z, 50.1234',
-                                    onChanged: (value) {
-                                      model.setHecZ(value);
-                                      print(model.hecZ);
-                                    },
-                                    tffColor1: Colors.black54,
-                                    tffColor2: const Color(0x99e6e6fa),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: TffFormat(
-                                    hintText: 'JD, 2460529',
-                                    onChanged: (value) {
-                                      model.setJulianD(value);
-                                      print(model.julianD);
-                                    },
-                                    tffColor1: Colors.black54,
-                                    tffColor2: const Color(0x99e6e6fa),
-                                  ),
-                                ),
-                              ],
-                            )
-                        )
-                      ]),
+                              )
+                          )
+                        ]),
 
 
 
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Wrap(
-                      spacing: 5.0,
-                      children: model.currentDisplayList.map((item){
-                        return model.buildItemWidget(item);
-                      }).toList(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Wrap(
+                        spacing: 5.0,
+                        children: model.currentDisplayList.map((item){
+                          return model.buildItemWidget(item);
+                        }).toList(),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

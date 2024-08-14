@@ -172,6 +172,13 @@ class TimelineRenderObject extends RenderBox {
       return;
     }
 
+    // 背景色を描画
+    canvas.drawRect(
+      Rect.fromLTWH(offset.dx, offset.dy, size.width, size.height),
+      Paint()..color = const Color(0xFF203744), // 好きな色を指定
+    );
+
+
     _tapTargets.clear();
     double renderStart = _timeline!.renderStart;
     double renderEnd = _timeline!.renderEnd;

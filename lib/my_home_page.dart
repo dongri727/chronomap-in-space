@@ -1,9 +1,11 @@
-import 'package:chronomap_in_space/3d_paths.dart';
-import 'package:chronomap_in_space/terrestrial_planets.dart';
+import 'package:chronomap_in_space/scatter/db_view.dart';
+import 'package:chronomap_in_space/scatter/interstellar.dart';
+import 'package:chronomap_in_space/scatter/terrestrial_planets.dart';
 import 'package:flutter/material.dart';
 import 'add_events/principal_page.dart';
 import 'scalable/menu/scalable.dart';
 import 'utils/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -33,34 +35,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 100),
-                child: Text(
-                  'ChronoMap',
-                  style: SpaceTheme.textTheme.titleMedium,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 100),
-                child: Text(
-                  'in Cosmos',
-                  style: SpaceTheme.textTheme.titleSmall,
-                ),
-              ),
-/*              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 100),
-                child: Text(
-                  textAlign: TextAlign.center,
-                  'A 4D Journey\nThrough Time and Space',
-                  style: SpaceTheme.textTheme.headlineMedium,
-                ),
-              ),*/
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: OutlinedButton(
                   child: Text(
-                    'Register Events',
+                    AppLocalizations.of(context)!.indexA,
                     style: SpaceTheme.textTheme.headlineMedium,
                   ),
                   onPressed: (){
@@ -75,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(12.0),
                 child: OutlinedButton(
                   child: Text(
-                    'Scalable View',
+                    AppLocalizations.of(context)!.indexB,
                     style: SpaceTheme.textTheme.headlineMedium,
                   ),
                   onPressed: () {
@@ -90,7 +71,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(12.0),
                 child: OutlinedButton(
                   child: Text(
-                    'Interstellar Missions',
+                    AppLocalizations.of(context)!.indexC,
+                    style: SpaceTheme.textTheme.headlineMedium,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DBView()));
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: OutlinedButton(
+                  child: Text(
+                    AppLocalizations.of(context)!.indexD,
                     style: SpaceTheme.textTheme.headlineMedium,
                   ),
                   onPressed: () {
@@ -105,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(12.0),
                 child: OutlinedButton(
                   child: Text(
-                    'Terrestrial Planets & Asteroids',
+                    AppLocalizations.of(context)!.indexE,
                     style: SpaceTheme.textTheme.headlineMedium,
                   ),
                   onPressed: () {

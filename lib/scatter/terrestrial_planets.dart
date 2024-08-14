@@ -37,15 +37,23 @@ class PlanetsState extends State<Planets> {
       appBar: AppBar(
         title: const Text('Planets Explore'),
       ),
-      body: Center(
-        child: SizedBox(
-          width: 1200,
-          height: 1000,
-          child: cassini == null
-              ? const CircularProgressIndicator()
-              : Echarts(
-            extensions: const [glScript],
-            option: '''
+      body: Container(
+        constraints: const BoxConstraints.expand( ),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/space.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: SizedBox(
+            width: 1200,
+            height: 1000,
+            child: cassini == null
+                ? const CircularProgressIndicator()
+                : Echarts(
+              extensions: const [glScript],
+              option: '''
     (function() {
       function generateOrbitData(radius, interval) {
         var data = [];
@@ -98,7 +106,7 @@ class PlanetsState extends State<Planets> {
           min: 2450000,
           max: 2455000,
           splitLine: {show: false},
-          name: 'timeline(JuliusD)',
+          name: 'timeline(JulianD)',
           axisLine: {
             lineStyle: {color: '#E6E1E6'}
           }                                 
@@ -108,52 +116,53 @@ class PlanetsState extends State<Planets> {
             type: 'scatter3D',
             symbolSize: 5,
             data: ${json.encode(cassini)},
-            label: {
-              show: true,
-              textStyle: {
-                fontSize: 12,
-                borderWidth: 1
+              label: {
+                show: true,
+                textStyle: {
+                  fontSize: 12,
+                  borderWidth: 1
+                },
+                formatter: function(param) {
+                  return param.data.name;
+                }
               },
-              formatter: function(param) {
-                return param.data.name;
-              }
+              itemStyle: {opacity: 0.8}    
             },
-            itemStyle: {opacity: 0.8}    
-          },
-          {
-            type: 'scatter3D',
-            symbolSize: 2,
-            data: generateOrbitData(5.82, 0.01), // 水星
-            itemStyle: { color: '#FF6347' } 
-          },
-          {
-            type: 'scatter3D',
-            symbolSize: 2,
-            data: generateOrbitData(10.75, 0.01), // 金星
-            itemStyle: { color: '#FF6347' } 
-          },
-          {
-            type: 'scatter3D',
-            symbolSize: 2,
-            data: generateOrbitData(14.93, 0.01), // 地球
-            itemStyle: { color: 'blue' } 
-          },
-          {
-            type: 'scatter3D',
-            symbolSize: 2,
-            data: generateOrbitData(22.68, 0.01), // 火星
-            itemStyle: { color: '#FF6347' } 
-          },
-          {
-            type: 'scatter3D',
-            symbolSize: 2,
-            data: generateOrbitData(40.31, 0.01), // 小惑星帯
-            itemStyle: { color: '#FF6347' } 
-          },      
-        ]
-      };
-    })()
-    ''',
+            {
+              type: 'scatter3D',
+              symbolSize: 2,
+              data: generateOrbitData(5.82, 0.01), // 水星
+              itemStyle: { color: '#FF6347' } 
+            },
+            {
+              type: 'scatter3D',
+              symbolSize: 2,
+              data: generateOrbitData(10.75, 0.01), // 金星
+              itemStyle: { color: '#FF6347' } 
+            },
+            {
+              type: 'scatter3D',
+              symbolSize: 2,
+              data: generateOrbitData(14.93, 0.01), // 地球
+              itemStyle: { color: 'blue' } 
+            },
+            {
+              type: 'scatter3D',
+              symbolSize: 2,
+              data: generateOrbitData(22.68, 0.01), // 火星
+              itemStyle: { color: '#FF6347' } 
+            },
+            {
+              type: 'scatter3D',
+              symbolSize: 2,
+              data: generateOrbitData(40.31, 0.01), // 小惑星帯
+              itemStyle: { color: '#FF6347' } 
+            },      
+          ]
+        };
+            })()
+            ''',
+            ),
           ),
         ),
       ),
