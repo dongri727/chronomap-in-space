@@ -60,7 +60,7 @@ class InfoPage extends StatelessWidget {
                         textContent: AppLocalizations.of(context)!.infoI),
                   ),
                   CustomTextContainer(
-                      textContent: AppLocalizations.of(context)!.infoJ),
+                      textContent: AppLocalizations.of(context)!.gmail),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
                     child: LaunchUrlContainer(

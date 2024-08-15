@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:chronomap_in_space/hints/planet_hint_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_echarts/flutter_echarts.dart';
@@ -36,6 +37,16 @@ class PlanetsState extends State<Planets> {
       key: scaffoldKey,
       appBar: AppBar(
         title: const Text('Planets Explore'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const PlanetHintPage()));
+              },
+              icon: const Icon(Icons.question_mark, color: Colors.blue,))
+        ],
       ),
       body: Container(
         constraints: const BoxConstraints.expand( ),

@@ -1,8 +1,7 @@
 import 'dart:convert';
-
-import 'package:chronomap_in_space/fetch/fetch_principal.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:chronomap_in_space/hints/db_view_hint.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_echarts/flutter_echarts.dart';
 import '../fetch/fetch_space.dart';
 import 'gl_script.dart' show glScript;
@@ -20,6 +19,7 @@ class DBViewState extends State<DBView> {
   List<Map<String, dynamic>>? spaceData;
   final FetchSpaceRepository fetchSpaceRepository = FetchSpaceRepository();
 
+
   @override
   void initState() {
     super.initState();
@@ -28,6 +28,7 @@ class DBViewState extends State<DBView> {
 
   String keyBody = 'Neptune';
 
+
   Future<void> _loadData() async {
     await fetchSpaceRepository.fetchAllSpace();
     setState(() {
@@ -35,16 +36,26 @@ class DBViewState extends State<DBView> {
         "value": [space.hecX, space.hecY, space.julianD],
         "name": space.affair,
       }).toList();
-      print('got space');
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: const Text('Database View (under construction)'),
+        title: Text(AppLocalizations.of(context)!.indexC),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DbViewHint()));
+              },
+              icon: const Icon(Icons.question_mark, color: Colors.blue,))
+        ],
       ),
       body: Container(
         constraints: const BoxConstraints.expand(),
@@ -112,7 +123,7 @@ class DBViewState extends State<DBView> {
                           zAxis3D: {
                             type: 'value',
                             min: 2450000,
-                            max: 2455000,
+                            max: 2460000,
                             splitLine: {show: false},
                             name: 'timeline(JulianD)',
                             axisLine: {
@@ -122,11 +133,12 @@ class DBViewState extends State<DBView> {
                           series: [
                             {
                               type: 'scatter3D',
-                              symbolSize: 5,
+                              symbolSize: 10,
                               data: ${json.encode(spaceData)},
                                 label: {
                                   show: true,
                                   textStyle: {
+                                    color: '#ffffff',
                                     fontSize: 12,
                                     borderWidth: 1
                                   },

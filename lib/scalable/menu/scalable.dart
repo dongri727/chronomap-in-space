@@ -1,5 +1,6 @@
 import 'package:acorn_client/acorn_client.dart';
 import 'package:flutter/material.dart';
+import '../../hints/scalable_hint_page.dart';
 import '../../serverpod_client.dart';
 import '../bloc_provider.dart';
 import '../timeline/widget.dart';
@@ -109,6 +110,16 @@ class ScalableState extends State<Scalable> {
         appBar: AppBar(
           automaticallyImplyLeading: true,
           title: const Text("SCALABLE"),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ScalableHintPage()));
+                },
+                icon: const Icon(Icons.question_mark, color: Colors.blue,))
+          ],
         ),
         body: Container(
           constraints: const BoxConstraints.expand( ),
@@ -124,34 +135,8 @@ class ScalableState extends State<Scalable> {
                 padding: const EdgeInsets.only(left: 30.0,right: 20.0),
                 child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: IconButton(
-                            icon: const Icon(
-                              Icons.question_mark,
-                              color: Colors.blue,
-                            ),
-                            onPressed: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: const Text('Search Hint'),
-                                      content: const Text('Select the target,\nthen the era you wish to view.'),
-                                      actions: <Widget>[
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                            child: const Text('close'))
-                                      ],
-                                    );
-                                  });
-                            }
-                        ),
-                      ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(top: 60),
                           child: OutlinedButton(
                               onPressed: () async {
                                 await fetchPrincipal();

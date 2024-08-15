@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_echarts/flutter_echarts.dart';
+import '../hints/interstellar_hint_page.dart';
 import 'gl_script.dart' show glScript;
 
 class Paths extends StatefulWidget {
@@ -45,9 +46,18 @@ class PathsState extends State<Paths> {
       key: scaffoldKey,
       appBar: AppBar(
         title: const Text('Interstellar Missions'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const InterstellarHintPage()));
+              },
+              icon: const Icon(Icons.question_mark, color: Colors.blue,))
+        ],
       ),
       body: Container(
-        //color: const Color(0xF191970),
         constraints: const BoxConstraints.expand( ),
         decoration: const BoxDecoration(
           image: DecorationImage(

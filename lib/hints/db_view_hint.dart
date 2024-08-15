@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../utils/describe_card.dart';
 
-class AddHintPage extends StatelessWidget {
-  const AddHintPage({super.key});
+class DbViewHint extends StatelessWidget {
+  const DbViewHint({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +26,22 @@ class AddHintPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50, 50, 50, 0),
                     child: CustomTextContainer(
-                        textContent: AppLocalizations.of(context)!.addHintA),
+                        textContent: AppLocalizations.of(context)!.dbViewA),
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                     child: CustomTextContainer(
-                        textContent: AppLocalizations.of(context)!.addHintB),
+                        textContent: AppLocalizations.of(context)!.dbViewB),
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                     child: CustomTextContainer(
-                        textContent: AppLocalizations.of(context)!.addHintC),
+                        textContent: AppLocalizations.of(context)!.dbViewC),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+                    child: CustomTextContainer(
+                        textContent: AppLocalizations.of(context)!.zoomable),
                   ),
                 ],
               ),

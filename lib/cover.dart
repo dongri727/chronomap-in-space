@@ -69,7 +69,7 @@ class CoverPageState extends State<CoverPage> {
                               MaterialPageRoute(
                                   builder: (context) => const InfoPage()));
                         },
-                        icon: const Icon(Icons.info_outline))
+                        icon: const Icon(Icons.info_outline, size: 32.0, color: Colors.blue,))
                   ],
                 ),
               ),

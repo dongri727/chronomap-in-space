@@ -48,6 +48,4 @@ class FetchStarsRepository {
       debugPrint('$e');
     }
   }
-
-
 }

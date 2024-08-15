@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:acorn_client/acorn_client.dart';
 
+import '../fetch/fetch_site.dart';
 import '../fetch/fetch_stars.dart';
 import '../lists/area_list.dart';
 import '../lists/epoch_list.dart';
@@ -12,9 +13,11 @@ import 'principal_page.dart';
 class PrincipalModel extends ChangeNotifier {
 
   late final FetchStarsRepository _fetchStarsRepository;
+  late final FetchSiteRepository _fetchLaunchSiteRepository;
 
   PrincipalModel() {
     _fetchStarsRepository = FetchStarsRepository();
+    _fetchLaunchSiteRepository = FetchSiteRepository();
   }
 
   TextEditingController yearController = TextEditingController();
@@ -69,6 +72,13 @@ class PrincipalModel extends ChangeNotifier {
   int selectedStarId = 0;
   String chosenStar = '';
 
+  var newSite = '';
+  final List<String> filtersSites= <String>[];
+  final List<int> filtersSitesId = <int>[];
+  String selectedSite = '';
+  int selectedSiteId = 0;
+  String chosenSite = '';
+
   ///DropdownButton
   String selectedArea = 'Universe';
 
@@ -89,25 +99,48 @@ class PrincipalModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///siteを取得
+  Future<void> fetchSite() async {
+    await _fetchLaunchSiteRepository.fetchSite();
+    currentDisplayList = _fetchLaunchSiteRepository.listLaunchSites;
+    notifyListeners();
+  }
+
   //Chipを表示
   Widget buildItemWidget(dynamic item) {
     // Define a function to extract the key based on item type
     String extractKey(dynamic item) {
       if (item is Stars) {
         return item.star;
+      } else if (item is LaunchSites) {
+        return item.site;
       }
       return ""; // Default case if none of the types match
     }
 
     // Use the extracted key to build the widget
+    String choiceKey = extractKey(item);
+    if (choiceKey.isEmpty) {
+      return Container(); // Return an empty container if no valid key is found
+    }
+
     return buildChoiceSIFormat(
-        choiceSIList: filtersStars,
-        choiceSIKey: extractKey(item),
-        onChoiceSISelected: (choiceKey) {
-          chosenStar = choiceKey;
-          updateChosenStar(choiceKey);
-        });
+      choiceSIList: (item is Stars) ? filtersStars : filtersSites,
+      choiceSIKey: choiceKey,
+      onChoiceSISelected: (selectedChoiceKey) {
+        if (item is Stars) {
+          chosenStar = selectedChoiceKey;
+          updateChosenStar(selectedChoiceKey);
+        } else if (item is LaunchSites) {
+          chosenSite = selectedChoiceKey;
+          updateChosenSite(selectedChoiceKey);
+        }
+      },
+    );
   }
+
+
+
 
   //選択された天体を表示
   void setChosenStar(String star) {
@@ -120,7 +153,18 @@ class PrincipalModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  //追加して再表示
+  //選択された射場を表示
+  void setChosenSite(String site) {
+    chosenSite = site;
+    notifyListeners();
+  }
+
+  void updateChosenSite(String newChosenSite) {
+    chosenSite = newChosenSite;
+    notifyListeners();
+  }
+
+  //天体を追加して再表示
   Future<void> addAndFetchStars() async {
     await _fetchStarsRepository.addStarsAndFetch(newStar, keyZone!);
     currentDisplayList = _fetchStarsRepository.listStars;
@@ -131,6 +175,19 @@ class PrincipalModel extends ChangeNotifier {
   //記入された天体を取得
   setNewStar(text) {
     newStar = text;
+  }
+
+  //射場を追加して再表示
+  Future<void> addAndFetchSites() async {
+    await _fetchLaunchSiteRepository.addSitesAndFetch(newSite);
+    currentDisplayList = _fetchLaunchSiteRepository.listLaunchSites;
+    launchSiteController.clear();
+    notifyListeners();
+  }
+
+  //記入された射場を取得
+  setNewSite(text) {
+    newSite = text;
   }
 
   List<String> periods = epoch; //時代選択肢

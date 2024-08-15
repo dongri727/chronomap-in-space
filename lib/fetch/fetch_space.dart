@@ -8,7 +8,7 @@ class FetchSpaceRepository {
   /// fetch space in space by precise
   fetchAllSpace() async {
     try {
-      listSpace = await client.space.getAllSpace();
+      listSpace = await client.space.getSpace();
     } catch (e) {
       debugPrint('$e');
     }
@@ -17,7 +17,8 @@ class FetchSpaceRepository {
   /// fetch space in space by precise
   fetchSelectedSpace(keyBody) async {
     try {
-      listSpace = await client.space.getSelectedSpace(keyword: keyBody);
+      listSpace = await client.space.getSpace(keyword: keyBody);
+      print('calls backend');
     } catch (e) {
       debugPrint('$e');
     }

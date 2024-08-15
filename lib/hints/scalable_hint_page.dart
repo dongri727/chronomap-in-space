@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../utils/describe_card.dart';
 
-class AddHintPage extends StatelessWidget {
-  const AddHintPage({super.key});
+class ScalableHintPage extends StatelessWidget {
+  const ScalableHintPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +26,31 @@ class AddHintPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50, 50, 50, 0),
                     child: CustomTextContainer(
-                        textContent: AppLocalizations.of(context)!.addHintA),
+                        textContent: AppLocalizations.of(context)!.scalableA),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+                    child: CustomTextContainer(
+                        textContent: AppLocalizations.of(context)!.scalableB),
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                     child: CustomTextContainer(
-                        textContent: AppLocalizations.of(context)!.addHintB),
+                        textContent: AppLocalizations.of(context)!.scalableC),
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                     child: CustomTextContainer(
-                        textContent: AppLocalizations.of(context)!.addHintC),
+                        textContent: AppLocalizations.of(context)!.scalableD),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+                    child: CustomTextContainer(
+                        textContent: AppLocalizations.of(context)!.scalableE),
+                  ),
+                  CustomTextContainer(
+                      textContent: AppLocalizations.of(context)!.gmail),
                 ],
               ),
             ),
