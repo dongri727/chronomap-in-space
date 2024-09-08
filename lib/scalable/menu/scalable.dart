@@ -1,5 +1,5 @@
 import 'package:acorn_client/acorn_client.dart';
-import 'package:chronomap_in_space/utils/shadowed_container.dart';
+import 'package:chronomap_in_cosmos/utils/shadowed_container.dart';
 import 'package:flutter/material.dart';
 import '../../hints/scalable_hint_page.dart';
 import '../../serverpod_client.dart';

@@ -1,5 +1,5 @@
-import 'package:chronomap_in_space/my_home_page.dart';
-import 'package:chronomap_in_space/utils/language_button.dart';
+import 'package:chronomap_in_cosmos/my_home_page.dart';
+import 'package:chronomap_in_cosmos/utils/language_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

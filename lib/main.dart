@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'cover.dart';
-import 'my_home_page.dart';
 import 'scalable/bloc_provider.dart';
 import 'scalable/timeline/timeline.dart';
 import 'serverpod_client.dart';

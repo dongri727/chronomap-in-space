@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:chronomap_in_space/hints/planet_hint_page.dart';
+import 'package:chronomap_in_cosmos/hints/planet_hint_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_echarts/flutter_echarts.dart';

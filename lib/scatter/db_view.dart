@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:chronomap_in_space/hints/db_view_hint.dart';
+import 'package:chronomap_in_cosmos/hints/db_view_hint.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_echarts/flutter_echarts.dart';
 import '../fetch/fetch_space.dart';

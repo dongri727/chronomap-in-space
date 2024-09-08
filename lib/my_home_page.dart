@@ -1,6 +1,6 @@
-import 'package:chronomap_in_space/scatter/db_view.dart';
-import 'package:chronomap_in_space/scatter/interstellar.dart';
-import 'package:chronomap_in_space/scatter/terrestrial_planets.dart';
+import 'package:chronomap_in_cosmos/scatter/db_view.dart';
+import 'package:chronomap_in_cosmos/scatter/interstellar.dart';
+import 'package:chronomap_in_cosmos/scatter/terrestrial_planets.dart';
 import 'package:flutter/material.dart';
 import 'add_events/principal_page.dart';
 import 'scalable/menu/scalable.dart';

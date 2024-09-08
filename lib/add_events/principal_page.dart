@@ -1,4 +1,4 @@
-import 'package:chronomap_in_space/hints/add_hint_page.dart';
+import 'package:chronomap_in_cosmos/hints/add_hint_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../utils/blank_text_format.dart';
@@ -337,7 +337,6 @@ class PrincipalPage extends StatelessWidget {
                                           hintText: 'HEC X, 1.2345+Ex7',
                                           onChanged: (value) {
                                             model.setHecX(value);
-                                            print(model.hecX);
                                           },
                                           tffColor1: Colors.black54,
                                           tffColor2: const Color(0x99e6e6fa),
@@ -370,7 +369,6 @@ class PrincipalPage extends StatelessWidget {
                                           hintText: 'HEC Z, 1.2345+Ex7',
                                           onChanged: (value) {
                                             model.setHecZ(value);
-                                            print(model.hecZ);
                                           },
                                           tffColor1: Colors.black54,
                                           tffColor2: const Color(0x99e6e6fa),
@@ -385,7 +383,6 @@ class PrincipalPage extends StatelessWidget {
                                           hintText: 'JD, 2460529',
                                           onChanged: (value) {
                                             model.setJulianD(value);
-                                            print(model.julianD);
                                           },
                                           tffColor1: Colors.black54,
                                           tffColor2: const Color(0x99e6e6fa),
@@ -432,7 +429,6 @@ class PrincipalPage extends StatelessWidget {
                                     hintText: 'Light Year',
                                     onChanged: (value) {
                                       model.setLightYear(value);
-                                      print(model.lightYear);
                                     },
                                     tffColor1: Colors.black54,
                                     tffColor2: const Color(0x99e6e6fa),

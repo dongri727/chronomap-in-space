@@ -18,7 +18,6 @@ class FetchSpaceRepository {
   fetchSelectedSpace(keyBody) async {
     try {
       listSpace = await client.space.getSpace(keyword: keyBody);
-      print('calls backend');
     } catch (e) {
       debugPrint('$e');
     }
