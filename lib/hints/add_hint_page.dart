@@ -33,11 +33,11 @@ class AddHintPage extends StatelessWidget {
                     child: CustomTextContainer(
                         textContent: AppLocalizations.of(context)!.addHintB),
                   ),
-                  Padding(
+/*                  Padding(
                     padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                     child: CustomTextContainer(
                         textContent: AppLocalizations.of(context)!.addHintC),
-                  ),
+                  ),*/
                 ],
               ),
             ),

@@ -62,6 +62,7 @@ class _MyAppState extends State<MyApp> {
     return BlocProvider(
       t: Timeline(Theme.of(context).platform),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Chronomap in Space',
         theme: ThemeData(
 

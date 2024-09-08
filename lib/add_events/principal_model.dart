@@ -20,18 +20,7 @@ class PrincipalModel extends ChangeNotifier {
     _fetchLaunchSiteRepository = FetchSiteRepository();
   }
 
-  TextEditingController yearController = TextEditingController();
-  TextEditingController monthController = TextEditingController();
-  TextEditingController dayController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
   TextEditingController starController = TextEditingController();
-  TextEditingController hecXController = TextEditingController();
-  TextEditingController hecYController = TextEditingController();
-  TextEditingController hecZController = TextEditingController();
-  TextEditingController julianDController = TextEditingController();
-  TextEditingController gLatController = TextEditingController();
-  TextEditingController gLonController = TextEditingController();
-  TextEditingController lightYearController = TextEditingController();
   TextEditingController launchSiteController = TextEditingController();
 
   double log10(num x) => log(x) / ln10;
@@ -138,9 +127,6 @@ class PrincipalModel extends ChangeNotifier {
       },
     );
   }
-
-
-
 
   //選択された天体を表示
   void setChosenStar(String star) {
@@ -303,9 +289,6 @@ class PrincipalModel extends ChangeNotifier {
     launchSite = text;
     notifyListeners();
   }
-
-
-
 
   /// convert the years depending on the selected calendar period
   void convertPoint() {

@@ -1,4 +1,5 @@
 import 'package:acorn_client/acorn_client.dart';
+import 'package:chronomap_in_space/utils/shadowed_container.dart';
 import 'package:flutter/material.dart';
 import '../../hints/scalable_hint_page.dart';
 import '../../serverpod_client.dart';
@@ -8,46 +9,22 @@ import 'menu_data.dart';
 import 'menu_section.dart';
 
 class Scalable extends StatefulWidget {
-
   final List<Principal>? principal;
-  const Scalable({ super.key, this.principal});
+  const Scalable({super.key, this.principal});
 
   @override
   ScalableState createState() => ScalableState();
 }
 
 class ScalableState extends State<Scalable> {
+  List<Principal> listPrincipal = [];
+  List<int> principalIds = [];
 
+  List<int> spaceCode = [686];
 
   /// [MenuData] selects era witch will be displayed at the Timeline
   /// This data is loaded from the asset bundle during [initState()]
   final MenuData _menu = MenuData();
-
-  List<String> locations = ['Universe', 'Solar System', 'Milky Way', 'Other Galaxy'];
-  List<int> spaceCode = [686];
-
-  List<Principal> listPrincipal = [];
-  List<int> principalIds = [];
-
-  Future<void> fetchPrincipal() async {
-    try {
-      listPrincipal = await client.principal.getPrincipal();
-      principalIds = listPrincipal.map((item) => item.id as int).toList();
-      setState(() {}); // データの更新をUIに反映させる
-    } on Exception catch (e) {
-      debugPrint('$e');
-    }
-  }
-
-  Future<void> fetchPrincipalByLocation({List<String>? location}) async {
-    try {
-      listPrincipal = await client.principal.getPrincipal(keywords: location);
-      principalIds = listPrincipal.map((item) => item.id as int).toList();
-      setState(() {}); // Refresh UI with new data
-    } on Exception catch (e) {
-      debugPrint('$e');
-    }
-  }
 
   ///fetch principal in Space
   Future<void> fetchPrincipalByDetailId({List<int>? detailIds}) async {
@@ -59,9 +36,6 @@ class ScalableState extends State<Scalable> {
       debugPrint('$e');
     }
   }
-
-
-
 
   /// Helper function which sets the [MenuItemData] for the [TimelineWidget].
   /// This will trigger a transition from the current menu to the Timeline,
@@ -84,25 +58,21 @@ class ScalableState extends State<Scalable> {
     setState(() {});
   }
 
-
   @override
   Widget build(BuildContext context) {
-    //EdgeInsets devicePadding = MediaQuery.of(context).padding;
     final timeline = BlocProvider.getTimeline(context);
 
     List<Widget> tail = [];
 
     tail
         .addAll(_menu.sections
-        .map<Widget>((MenuSectionData section) => Container(
-        margin: const EdgeInsets.only(top: 20.0),
-        child: MenuSection(
-          section.label,
-          section.backgroundColor,
-          section.textColor,
-          section.items,
-          navigateToTimeline,
-        )))
+        .map<Widget>((MenuSectionData section) => MenuSection(
+      section.label,
+      section.backgroundColor,
+      section.textColor,
+      section.items,
+      navigateToTimeline,
+    ))
         .toList(growable: false)
     );
 
@@ -118,11 +88,14 @@ class ScalableState extends State<Scalable> {
                       MaterialPageRoute(
                           builder: (context) => const ScalableHintPage()));
                 },
-                icon: const Icon(Icons.question_mark, color: Colors.blue,))
+                icon: const Icon(
+                  Icons.question_mark,
+                  color: Colors.blue,
+                ))
           ],
         ),
         body: Container(
-          constraints: const BoxConstraints.expand( ),
+          constraints: const BoxConstraints.expand(),
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/space.png'),
@@ -132,37 +105,30 @@ class ScalableState extends State<Scalable> {
           child: SingleChildScrollView(
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.only(left: 30.0,right: 20.0),
+                padding: const EdgeInsets.fromLTRB(80, 100, 80, 0),
                 child: Column(
                     children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 60),
+                      const Text('Step 1 Get Data', style: TextStyle(color: Colors.white, fontSize: 20)),
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: ShadowedContainer(
                           child: OutlinedButton(
                               onPressed: () async {
-                                await fetchPrincipal();
+                                await fetchPrincipalByDetailId();
                                 await timeline.gatherEntries(listPrincipal);
                               },
-                              child: const Text('All Items',
-                                style: TextStyle(color: Colors.white, fontSize: 20),
-                              )
+                              child: const Text('Get', style: TextStyle(color: Colors.red, fontSize: 20),),
                           ),
                         ),
-
-                        OutlinedButton(
-                          onPressed: () async {
-                            //await fetchPrincipalByLocation(location: locations);
-                            await fetchPrincipalByDetailId();
-                            await timeline.gatherEntries(listPrincipal);
-                          }, child: const Text('In Space',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )
-                        ),
-
-                    ] + tail),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 100),
+                        child: Text('Step 2 Choose Epoch', style: TextStyle(color: Colors.white, fontSize: 20)),
+                      ),
+                  ] + tail),
               ),
             ),
           ),
-        )
-    );
+        ));
   }
 }

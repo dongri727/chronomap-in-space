@@ -268,7 +268,7 @@ class PrincipalPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                Row(
+/*                                Row(
                                   children: [
                                     Expanded(
                                         flex: 1,
@@ -290,8 +290,8 @@ class PrincipalPage extends StatelessWidget {
                                           text: model.chosenSite,
                                         )),
                                   ],
-                                ),
-                                Row(
+                                ),*/
+/*                                Row(
                                   children: [
                                     Expanded(
                                       flex: 2,
@@ -317,7 +317,7 @@ class PrincipalPage extends StatelessWidget {
                                       ),
                                     ),
                                   ],
-                                ),
+                                ),*/
                                 Padding(
                                     padding: const EdgeInsets.fromLTRB(
                                         20, 50, 20, 20),
