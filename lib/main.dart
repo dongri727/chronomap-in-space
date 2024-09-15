@@ -11,10 +11,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeServerpodClient();
-  await SystemChrome.setPreferredOrientations([
+/*  await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,//左向きを許可
     DeviceOrientation.landscapeRight,//右向きを許可
-  ]);
+  ]);*/
   runApp(const MyApp());
 }
 

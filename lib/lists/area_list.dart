@@ -3,4 +3,5 @@ List<String> area = [
   'Solar System',
   'Milky Way',
   'Other Galaxy',
+  'Space Ship'
 ];

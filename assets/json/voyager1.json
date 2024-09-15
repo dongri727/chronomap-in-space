@@ -37,5 +37,6 @@
     {"value": [-316.0, -961.9, 697.1], "name": "01", "itemStyle": {"color": "#00ff00"}},
     {"value": [-322.7, -1005.6, 728.7], "name": "02", "itemStyle": {"color": "#00ff00"}},
     {"value": [-329.5, -1049.3, 760.2], "name": "03", "itemStyle": {"color": "#00ff00"}},
-    {"value": [-336.2, -1093.1, 791.8], "name": "04_Voyager1", "itemStyle": {"color": "#00ff00"}}
+    {"value": [-336.2, -1093.1, 791.8], "name": "04_Voyager1", "itemStyle": {"color": "#00ff00"}},
+     {"value": [-467.8, -1958.7, 1417.1], "name": "24_Sep AttitudeControl", "itemStyle": {"color": "#00ff00"}}
   ]
