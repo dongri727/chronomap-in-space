@@ -34,7 +34,7 @@ class CoverPageState extends State<CoverPage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding: const EdgeInsets.fromLTRB(30, 50, 30, 30),
               child: ShadowedContainer(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

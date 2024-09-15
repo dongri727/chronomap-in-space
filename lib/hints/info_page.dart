@@ -28,21 +28,16 @@ class InfoPage extends StatelessWidget {
                     child: CustomTextContainer(
                         textContent: AppLocalizations.of(context)!.infoA),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      LaunchUrlContainer(
-                        textContent: AppLocalizations.of(context)!.infoB,
-                        url: 'https://app.laporte.academy',
-                      ),
-                      LaunchUrlContainer(
-                          textContent: AppLocalizations.of(context)!.infoC,
-                          url: 'https://tempo-spaco.web.app'),
-                      LaunchUrlContainer(
-                          textContent: AppLocalizations.of(context)!.infoD,
-                          url: 'https://www.youtube.com/@laporte_academy')
-                    ],
+                  LaunchUrlContainer(
+                    textContent: AppLocalizations.of(context)!.infoB,
+                    url: 'https://app.laporte.academy',
                   ),
+                  LaunchUrlContainer(
+                      textContent: AppLocalizations.of(context)!.infoC,
+                      url: 'https://tempo-spaco.web.app'),
+                  LaunchUrlContainer(
+                      textContent: AppLocalizations.of(context)!.infoD,
+                      url: 'https://www.youtube.com/@laporte_academy'),
                   CustomTextContainer(
                       textContent: AppLocalizations.of(context)!.infoE),
                   CustomTextContainer(

@@ -22,4 +22,7 @@ class SpaceTheme {
     bodySmall: GoogleFonts.hinaMincho(
         fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black54),//black
   );
+  static AppBarTheme appBarTheme = const AppBarTheme(
+    backgroundColor: Color(0x4D00533f),
+  );
 }

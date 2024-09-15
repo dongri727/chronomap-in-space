@@ -3,7 +3,7 @@
   "cover": "assets/images/cover_fr.png",
   "infoA": "Il s'agit d'une application spécialisée dans l'entrée et la sortie de données liées à l'univers de la \"ChronoMap\". La \"ChronoMap\" est une base de données qui englobe tous les événements historiques depuis l'origine de l'univers jusqu'à l'éternel 'maintenant,' sans égard au domaine. Elle vise à afficher correctement les distances temporelles et spatiales, avec 'quand' et 'où' comme éléments obligatoires.",
   "infoB": "Version web de la \"ChronoMap\"",
-  "infoC": "Version web des vues tridimensionnelles et quadridimensionnellesn",
+  "infoC": "Version web des vues 3D et 4D",
   "infoD": "Comment utiliser la \"ChronoMap\"",
   "infoE": "Cette application ne récupère aucune de vos informations personnelles, ni ne suit ni n'utilise les informations de votre appareil.",
   "infoF": "Les informations historiques que vous enregistrez ne vous sont pas liées. Il n'y a pas d'enregistrement de ce que vous inscrivez ou recherchez.",

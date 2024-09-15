@@ -1,3 +1,4 @@
+import 'package:chronomap_in_cosmos/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -64,10 +65,10 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Chronomap in Space',
         theme: ThemeData(
-
           textTheme: GoogleFonts.tsukimiRoundedTextTheme(
               Theme.of(context).textTheme
           ),
+          appBarTheme: SpaceTheme.appBarTheme,
 
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
