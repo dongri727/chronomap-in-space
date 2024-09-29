@@ -4,6 +4,7 @@ import 'package:chronomap_in_cosmos/scatter/terrestrial_planets.dart';
 import 'package:flutter/material.dart';
 import 'add_events/principal_page.dart';
 import 'scalable/menu/scalable.dart';
+import 'scatter/mini_moon/mini_moon.dart';
 import 'utils/theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -109,6 +110,21 @@ class _MyHomePageState extends State<MyHomePage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => const Planets()));
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: OutlinedButton(
+                  child: Text(
+                    'Mini Moon',
+                    style: SpaceTheme.textTheme.headlineMedium,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MiniMoonPage()));
                   },
                 ),
               ),

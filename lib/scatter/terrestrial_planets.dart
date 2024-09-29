@@ -3,6 +3,8 @@ import 'package:chronomap_in_cosmos/hints/planet_hint_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_echarts/flutter_echarts.dart';
+import '../my_home_page.dart';
+import '../utils/navi_button.dart';
 import 'gl_script.dart' show glScript;
 
 class Planets extends StatefulWidget {
@@ -36,6 +38,10 @@ class PlanetsState extends State<Planets> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
+        leading: const NavigationButton(
+            destinationPage: MyHomePage(),
+            buttonText: 'INDEX'),
+        leadingWidth: 100,
         title: const Text('Planets Explore'),
         actions: [
           IconButton(

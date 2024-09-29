@@ -1,6 +1,5 @@
 import 'package:chronomap_in_cosmos/utils/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'cover.dart';
 import 'scalable/bloc_provider.dart';

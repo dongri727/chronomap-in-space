@@ -2,7 +2,9 @@ import 'package:acorn_client/acorn_client.dart';
 import 'package:chronomap_in_cosmos/utils/shadowed_container.dart';
 import 'package:flutter/material.dart';
 import '../../hints/scalable_hint_page.dart';
+import '../../my_home_page.dart';
 import '../../serverpod_client.dart';
+import '../../utils/navi_button.dart';
 import '../bloc_provider.dart';
 import '../timeline/widget.dart';
 import 'menu_data.dart';
@@ -78,7 +80,10 @@ class ScalableState extends State<Scalable> {
 
     return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: true,
+          leading: const NavigationButton(
+              destinationPage: MyHomePage(),
+              buttonText: 'INDEX'),
+          leadingWidth: 100,
           title: const Text("SCALABLE"),
           actions: [
             IconButton(

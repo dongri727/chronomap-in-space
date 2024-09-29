@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_echarts/flutter_echarts.dart';
 import '../hints/interstellar_hint_page.dart';
+import '../my_home_page.dart';
+import '../utils/navi_button.dart';
 import 'gl_script.dart' show glScript;
 
 class Paths extends StatefulWidget {
@@ -45,6 +47,10 @@ class PathsState extends State<Paths> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
+        leading: const NavigationButton(
+            destinationPage: MyHomePage(),
+            buttonText: 'INDEX'),
+        leadingWidth: 100,
         title: const Text('Interstellar Missions'),
         actions: [
           IconButton(

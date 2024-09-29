@@ -40,5 +40,6 @@
   "scalableB": "Étape 1\nAppuyez toujours sur le bouton \"Get\" pour récupérer les données",
   "scalableC": "Étape 2\nLes cinq options en bas vous permettent de sélectionner la zone d'affichage initiale. Vous pouvez faire défiler l'ensemble de la chronologie après l'affichage initial.",
   "scalableD": "La chronologie logarithmique est réglée avec l'année 2100 comme base, le temps s'écoulant de haut en bas. Les événements sont fixés sur la chronologie, de sorte que les événements qui se sont produits à des moments proches sont affichés près les uns des autres, tandis que les événements qui se sont produits sur une plus longue période sont affichés plus loin. En zoomant, les détails des événements de la même époque s'affichent, tandis qu'un zoom arrière permet d'avoir une vue d'ensemble des périodes plus longues.",
-  "scalableE": "Si vous trouvez des événements mal placés sur la chronologie, veuillez nous contacter à l'adresse suivante."
+  "scalableE": "Si vous trouvez des événements mal placés sur la chronologie, veuillez nous contacter à l'adresse suivante.",
+  "miniMoonA": "Ceci est une page affichant l'orbite du deuxième satellite de la Terre, 2024PT5, en utilisant les coordonnées écliptiques géocentriques et héliocentriques. Actuellement, l'orbite depuis sa découverte le 7 août 2024 jusqu'au 30 décembre de la même année est présentée. Si vous souhaitez contribuer à l'extension de l'orbite de 2024PT5 ou à l'affichage des orbites des précédents deuxièmes satellites (1991 VG, 2006 RH120, 2020 CD3, 2022 NX1), veuillez nous contacter ci-dessous."
 }
